@@ -1,0 +1,44 @@
+<?php
+
+/**
+* @file
+* Расположен на сервере https://security.rkomi.ru
+* /var/www/security/www/drupal-root/sites-all/modules/custom
+*/
+
+
+/**
+* Реализуем hook_form_alter().
+*/
+
+
+function xrays_form_alter(&$form, &$form_state, $form_id) {
+  $form['xrays_display_form_id'] = array(
+    '#type' => 'item',
+    '#title' => t('Form ID'),
+    '#markup' => $form_id,
+    '#weight' => -100,
+  );
+  debug($form, $form_id, TRUE);
+}
+
+
+/** */
+$node = node_load(get_node_id());
+
+print_r($node->title);
+
+function foo($nid){
+	return $num = $nid;
+}
+
+function boo($title){
+	return $title = $title;
+}
+
+print(foo($node->nid));
+print(boo($node->title));
+
+if (boo($node->title) == "АКТ № 1 СЗИ"){
+	drupal_set_message("it's drupal_set_message say Hello, world!");
+}
