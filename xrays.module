@@ -24,14 +24,18 @@ function xrays_form_alter(&$form, &$form_state, $form_id) {
 
 
 /** Работа с массивом Ноды */
+// Загрузка всей ноды
 $node = node_load(get_node_id());
 
+// Заголовок ноды
 print_r($node->title);
 
+
+// ИД Ноды
 function foo($nid){
 	return $num = $nid;
 }
-
+// Заголовок Ноды
 function boo($title){
 	return $title = $title;
 }
@@ -39,7 +43,9 @@ function boo($title){
 print(foo($node->nid));
 print(boo($node->title));
 
+
 if (boo($node->title) == "АКТ № 1 СЗИ"){
+	// Сообщение drupal
 	drupal_set_message("it's drupal_set_message say Hello, world!");
 }
 
